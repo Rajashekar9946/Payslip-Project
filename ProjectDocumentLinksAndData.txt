@@ -1,0 +1,60 @@
+PostMapping::http://localhost:8080/employee/saveEmployee
+
+O/P
+
+{
+    "employeeCode": 1,
+    "name": "RajaShekar",
+    "department": "IT",
+    "employeeBand": "U3",
+    "function": "Developer",
+    "subFunction": "Java Developer",
+    "location": "Hyderabad",
+    "salary": 84000.24,
+    "hireDate": "28-10-2021"
+}
+
+GetMapping:: http://localhost:8080/employee/getAllEmployee
+
+O/P
+[
+    {
+        "employeeCode": 1,
+        "name": "RajaShekar",
+        "department": "IT",
+        "employeeBand": "U3",
+        "function": "Developer",
+        "subFunction": "Java Developer",
+        "location": "Hyderabad",
+        "salary": 84000.24,
+        "hireDate": "28-10-2021"
+    },
+    {
+        "employeeCode": 2,
+        "name": "Murali",
+        "department": "IT",
+        "employeeBand": "U3",
+        "function": "Developer",
+        "subFunction": "Java Developer",
+        "location": "Hyderabad",
+        "salary": 77000.24,
+        "hireDate": "08-05-2021"
+    },
+    {
+        "employeeCode": 3,
+        "name": "Khasim",
+        "department": "IT",
+        "employeeBand": "U3",
+        "function": "Developer",
+        "subFunction": "Java Developer",
+        "location": "Hyderabad",
+        "salary": 55000.24,
+        "hireDate": "09-04-2021"
+    }
+]
+
+GetEmlpoyeeByCodeOrname ::http://localhost:8080/employee/Murali    http://localhost:8080/employee/1
+
+getSalaryByEmployeeCode :: http://localhost:8080/employee/2/salary
+
+o/p :75000.24
