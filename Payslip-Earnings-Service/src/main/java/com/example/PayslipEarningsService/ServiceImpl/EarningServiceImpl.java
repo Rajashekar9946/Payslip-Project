@@ -71,4 +71,19 @@ public class EarningServiceImpl implements EarningService {
                 .orElseThrow(() -> new NoSuchElementException("No Earnings data found for employeeCode:" + employeeCode));
     }
 
+    @Override
+    public EarningsResponse getEarningsByEmployeeCodeAndPayPeriod(Long employeeCode, String payPeriod) {
+        return earningsRepository.findByEmployeeCodeAndPayPeriod(employeeCode,payPeriod)
+                .map(earnings->EarningsResponse.builder()
+                        .employeeCode(earnings.getEmployeeCode())
+                        .payPeriod(earnings.getPayPeriod())
+                        .baseSalary(earnings.getBaseSalary())
+                        .houseRentAllowance(earnings.getHouseRentAllowance())
+                        .reconciledFlexiPay(earnings.getReconciledFlexiPay())
+                        .variablePay(earnings.getVariablePay())
+                        .totalEarnings(earnings.getTotalEarnings())
+                        .build())
+                .orElseThrow(()->new NoSuchElementException("No earnings data found for employeeCode:"+employeeCode+"and payPeriod:"+payPeriod));
+    }
+
 }

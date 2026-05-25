@@ -1,7 +1,6 @@
 package com.example.PayslipEarningsService.Service;
 
 
-
 import com.example.PayslipEarningsService.DTO.EmployeeResponse;
 import com.example.PayslipEarningsService.Model.AttendanceRequest;
 import com.example.PayslipEarningsService.Model.EarningsResponse;
@@ -14,4 +13,6 @@ public interface EarningService {
     CompletableFuture<EarningsResponse> calculateEarnings(AttendanceRequest request);
 
     EarningsResponse getEarningsByEmployeeCode(Long employeeCode);
+
+    EarningsResponse getEarningsByEmployeeCodeAndPayPeriod(Long employeeCode, String payPeriod);
 }
