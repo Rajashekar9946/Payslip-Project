@@ -1,4 +1,10 @@
-PostMapping::http://localhost:8080/employee/saveEmployee
+https://github.com/Rajashekar9946/Payslip-Project
+
+
+
+PayslipEmployeeServiceApplication::
+
+PostMapping::http://localhost:9099/employees/saveEmployee
 
 O/P
 
@@ -14,7 +20,7 @@ O/P
     "hireDate": "28-10-2021"
 }
 
-GetMapping:: http://localhost:8080/employee/getAllEmployee
+GetMapping:: http://localhost:9099/employees/getAllEmployee
 
 O/P
 [
@@ -53,8 +59,231 @@ O/P
     }
 ]
 
-GetEmlpoyeeByCodeOrname ::http://localhost:8080/employee/Murali    http://localhost:8080/employee/1
 
-getSalaryByEmployeeCode :: http://localhost:8080/employee/2/salary
+GetMapping:: GetEmlpoyeeByCodeOrname ::http://localhost:9099/employees/Murali    http://localhost:9099/employees/790384
+
+GetMapping:: getSalaryByEmployeeCode :: http://localhost:9099/employees/790384/salary
 
 o/p :75000.24
+
+
+
+
+
+EmployeeEarningServiceApplication::
+
+PostMapping::http://localhost:9094/earnings/calculate
+
+I/P:
+ {
+    "employeeCode": "790384",
+    "totalHoursWorked": 178,
+    "leavesTaken": 1,
+    "absences": 0,
+    "payPeriod": "JUNE-01-2025"
+}
+
+O/P::
+
+{
+    "employeeCode": 790384,
+    "payPeriod": "JUNE-01-2025",
+    "baseSalary": 1750.0,
+    "houseRentAllowance": 875.0,
+    "reconciledFlexiPay": 350.0,
+    "variablePay": 525.0,
+    "totalEarnings": 3480.56
+}
+
+
+Getmapping:: http://localhost:9094/earnings/790384
+ 
+O/P:
+{
+    "employeeCode": 790384,
+    "payPeriod": "JUNE-01-2025",
+    "baseSalary": 1750.0,
+    "houseRentAllowance": 875.0,
+    "reconciledFlexiPay": 350.0,
+    "variablePay": 525.0,
+    "totalEarnings": 3480.56
+}
+
+GetMapping:http://localhost:9094/earnings/employee/790384/payPeriod/JUNE-01-2025
+
+O/P:
+{
+    "employeeCode": 790384,
+    "payPeriod": "JUNE-01-2025",
+    "baseSalary": 1750.0,
+    "houseRentAllowance": 875.0,
+    "reconciledFlexiPay": 350.0,
+    "variablePay": 525.0,
+    "totalEarnings": 3480.56
+}
+
+GetMapping: http://localhost:9094/earnings/totalEarnings/790384
+
+O/P:
+3480.56
+
+PayslipBankServiceApplication::
+
+Postmapping:: http://localhost:9091/banks/createBank
+
+I/P:
+{
+    "employeeCode": 990384,
+    "bank": "HDFC",
+    "accountNo": "790387584949",
+    "currency": "rupees"
+}
+
+O/P:
+{
+    "employeeCode": 990384,
+    "bank": "HDFC",
+    "accountNo": "790387584949",
+    "currency": "rupees"
+}
+
+GetMapping::http://localhost:9091/banks
+
+O/P:
+[
+    {
+        "accountNo": null,
+        "bank": null,
+        "currency": null,
+        "employeeCode": 1
+    },
+    {
+        "accountNo": null,
+        "bank": null,
+        "currency": null,
+        "employeeCode": 2
+    },
+    {
+        "accountNo": "123456789",
+        "bank": "HDFC",
+        "currency": "rupees",
+        "employeeCode": 790384
+    },
+    {
+        "accountNo": "790387584949",
+        "bank": "HDFC",
+        "currency": "rupees",
+        "employeeCode": 990384
+    }
+]
+
+
+getmapping::http://localhost:9091/banks/990384
+
+O/P:
+{
+    "accountNo": "790387584949",
+    "bank": "HDFC",
+    "currency": "rupees",
+    "employeeCode": 990384
+}
+
+
+PayslipDeductionService::
+
+GetMapping:http://localhost:9095/deductions/790384
+
+O/P:
+{
+    "employeeCode": 790384,
+    "totalEarnings": 3480.56,
+    "taxDeduction": 0.0,
+    "providentFund": 278.44,
+    "netPay": 3202.12,
+    "payPeriod": "May-2026"
+}
+
+Getmapping:: http://localhost:9095/deductions/fetch/790384
+
+O/P:
+{
+    "employeeCode": 790384,
+    "totalEarnings": 3480.56,
+    "taxDeduction": 0.0,
+    "providentFund": 278.44,
+    "netPay": 3202.12,
+    "payPeriod": "May-2026"
+}
+
+
+PayslipTaxService:: 
+
+PostMapping: http://localhost:9092/taxes
+
+I/P:
+{
+    "employeeCode": 790384,
+    "pan": "CJPPR9687G",
+    "esiNumber": "7938758409",
+    "pfNumber": "101694198827",
+    "pfUanNumber": "123456789009"
+}
+
+O/P:
+{
+    "employeeCode": 790384,
+    "pan": "CJPPR9687G",
+    "esiNumber": "7938758409",
+    "pfNumber": "101694198827",
+    "pfUanNumber": "123456789009"
+}
+
+GetMapping:: http://localhost:9092/taxes
+
+O/P:
+[
+    {
+        "employeeCode": 790384,
+        "pan": "CJPPR9687G",
+        "esiNumber": "7938758409",
+        "pfNumber": "101694198827",
+        "pfUanNumber": "123456789009"
+    },
+    {
+        "employeeCode": 990384,
+        "pan": "PJPPR9687H",
+        "esiNumber": "8738758409",
+        "pfNumber": "202694198827",
+        "pfUanNumber": "453456789009"
+    }
+]
+
+GetMapping::http://localhost:9092/taxes/CJPPR9687G
+
+O/P:
+{
+    "employeeCode": 790384,
+    "pan": "CJPPR9687G",
+    "esiNumber": "7938758409",
+    "pfNumber": "101694198827",
+    "pfUanNumber": "123456789009"
+}
+
+DeleteMapping:http://localhost:9092/taxes/990384
+
+Putmapping:http://localhost:9092/taxes/790384
+{
+    "employeeCode": 990384,
+    "pan": "PJPPR9687K",
+    "esiNumber": "8738758409",
+    "pfNumber": "202694198827",
+    "pfUanNumber": "453456789009"
+}
+
+
+PayslipMainService::
+Postmapping::http://localhost:9096/generatePayslip?employeeCode=790384&payPeriod=JUNE-01-2025
+
+
+
+
